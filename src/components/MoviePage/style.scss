@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+@import "../../config.scss";
+
+.movie-container {
+  display: flex;
+  gap: 5%;
+  font-family: "Exo 2", sans-serif;
+}
+
+.movie-name {
+  font-family: "Russo One", sans-serif;
+  font-size: 45px;
+}
+
+.movie-name-en {
+  color: #afb2b6;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.short-description {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.movie-info-header {
+  font-family: "Russo One", sans-serif;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.movie-info-long {
+  span {
+    font-family: "Russo One", sans-serif;
+    margin-right: 10px;
+  }
+}
+
+.description {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.links-header {
+  font-family: "Russo One", sans-serif;
+  max-width: 250px;
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.4s ease-out;
+  transition-delay: 0.3s;
+  &:hover {
+    color: $purple-color;
+  }
+}
+
+.add-to-fav {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background-color: $purple-color;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  transition: 0.4s ease-out;
+  transition-delay: 0.3s;
+  cursor: pointer;
+  color: white;
+  span {
+    font-family: "Russo One", sans-serif;
+    font-size: 20px;
+  }
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.rotate {
+  transform: rotate(3.142rad);
+}
+
+.right {
+  transform: rotate(270deg);
+}
+
+.similar {
+  font-family: "Russo One", sans-serif;
+  max-width: 250px;
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: 0.4s ease-out;
+  transition-delay: 0.3s;
+  &:hover {
+    color: $purple-color;
+  }
+}

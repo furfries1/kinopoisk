@@ -1,0 +1,13 @@
+.similar-movies-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 40px;
+}
+
+.similar-header {
+    font-size: 24px;
+    font-family: "Russo One", sans-serif;
+    margin-top: 0;
+    margin-bottom: 30px;
+}

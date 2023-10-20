@@ -1,0 +1,21 @@
+@import "../../config.scss";
+
+.link-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    transition: .4s ease-out;
+    transition-delay: 0.3s;
+    cursor: pointer;
+    &:hover{
+        color: $purple-color;
+      }
+}
+
+.link-logo {
+    width: 40px;
+    border-radius: 50%;
+}
+
