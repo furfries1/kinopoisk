@@ -13,7 +13,6 @@ const MoviePageContainer = () => {
   const { id } = useParams<{ id: string }>();
   const dispatch = useDispatch<ThunkDispatch<any, {}, AnyAction>>();
   const movie = useSelector(({ moviePage }) => moviePage);
-  // const movieLinks = useSelector(({ movieLinks }) => movieLinks);
   useEffect(() => {
     dispatch(GET_MOVIE_PAGE(Number(id)));
   }, []);

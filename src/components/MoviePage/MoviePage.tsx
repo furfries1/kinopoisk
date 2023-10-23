@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./style.scss";
 import { ILink, IMoviePage } from "src/interfaces/interfaces";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 const MoviePage = ({ moviePage }: IMoviePage) => {
   const [isLinksOpen, setIsLinksOpen] = useState(false);
   const dispatch = useDispatch<ThunkDispatch<any, {}, AnyAction>>();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const {
     nameRu,
     nameOriginal,
@@ -35,7 +35,7 @@ const MoviePage = ({ moviePage }: IMoviePage) => {
   };
   const similarHandler = () => {
     dispatch(GET_SIMILAR_MOVIES(kinopoiskId));
-    navigate(`/similar/${nameRu}`)
+    navigate(`/similar/${nameRu}`);
   };
   const movieLinks = useSelector(({ movieLinks }) => movieLinks);
   return (
@@ -70,13 +70,13 @@ const MoviePage = ({ moviePage }: IMoviePage) => {
             <span>Время:</span> {filmLength} мин
           </div>
           <div className="imdb-rating">
-            <span>IMDB:</span> {ratingImdb}
+            <span>IMDB:</span> {ratingImdb ? ratingImdb : "-"}
           </div>
           <div className="imdb-rating">
-            <span>Кинопоиск:</span> {ratingKinopoisk}
+            <span>Кинопоиск:</span> {ratingKinopoisk ? ratingKinopoisk : "-"}
           </div>
           <div className="slogan">
-            <span>Слоган:</span> «{slogan}»
+            <span>Слоган:</span> «{slogan ? slogan : "-"}»
           </div>
           <div className="description">{description}</div>
           <div className="similar" onClick={similarHandler}>

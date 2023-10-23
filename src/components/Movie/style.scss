@@ -1,13 +1,26 @@
 @import "../../config.scss";
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@1,300&display=swap');
 
+@mixin rating-style {
+  font-family: "Exo 2", sans-serif;
+  position: relative;
+  top: 33px;
+  left: 7px;
+  font-weight: 600;
+  max-width: 35px;
+  text-align: center;
+  border-radius: 6px;
+  padding: 3px;
+  color: #fff;
+}
 
 .movie {
-  max-width: 260px;
+  max-width: 245px;
   box-sizing: border-box;
   cursor: pointer;
   transition-delay: 0.3s;
   transition: .4s ease-out;
+  align-self: inherit;
   img {
     max-width: 260px;
     max-height: 360px;
@@ -18,16 +31,23 @@
   }
 }
 
-.movie-rating {
-  font-family: "Exo 2", sans-serif;
-  position: relative;
-  top: 30px;
-  left: 7px;
-  font-weight: 600;
+.green{
+  @include rating-style;
   background-color: $rating-green-color;
-  max-width: 35px;
-  text-align: center;
-  border-radius: 6px;
+}
+
+.yellow {
+  @include rating-style;
+  background-color: $rating-yellow-color;
+}
+
+.red {
+  @include rating-style;
+  background-color: $rating-red-color;
+}
+
+.hide {
+  display: none;
 }
 
 .movies-name {

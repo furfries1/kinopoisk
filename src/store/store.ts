@@ -5,10 +5,14 @@ import { composeWithDevTools } from "redux-devtools-extension";
 const initialState = {
   theme: "dark",
   topMovies: [],
+  latestMovies: [],
   moviePage: [],
   movieLinks: [],
   similarMovies: [],
   isLoading: false,
+  pagesCount: 0,
+  currentPageLatest: 1,
+  currentPageMain: 1,
 };
 
 const rootReducer = (state = initialState, action: any) => {
@@ -47,6 +51,30 @@ const rootReducer = (state = initialState, action: any) => {
       return {
         ...state,
         isLoading: !state.isLoading,
+      };
+    }
+    case "SET_PAGES_COUNT": {
+      return {
+        ...state,
+        pagesCount: action.payload,
+      };
+    }
+    case "SET_CURRENT_PAGE_MAIN": {
+      return {
+        ...state,
+        currentPageMain: action.payload,
+      };
+    }
+    case "SET_CURRENT_PAGE_LATEST": {
+      return {
+        ...state,
+        currentPageLatest: action.payload,
+      };
+    }
+    case "SET_LATEST_MOVIES": {
+      return {
+        ...state,
+        latestMovies: action.payload,
       };
     }
     default:

@@ -1,44 +1,56 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./style.scss";
 import { IMovies } from "src/interfaces/interfaces";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
-import { GET_MOVIE_PAGE } from "src/actions/actions";
+import { getRatingColor } from "src/helpers";
 
 const Movie = ({ movie }: IMovies) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch<ThunkDispatch<any, {}, AnyAction>>();
-  const { nameRu, genres, countries, rating, posterUrlPreview, year, filmId, relationType } =
-    movie;
+  const {
+    nameRu,
+    genres,
+    countries,
+    rating,
+    posterUrlPreview,
+    year,
+    filmId,
+    relationType,
+    kinopoiskId,
+    ratingKinopoisk
+  } = movie;
   const openMoviePage = () => {
-    navigate(`/movie/${filmId}`);
+    navigate(`/movie/${kinopoiskId ? kinopoiskId : filmId}`);
   };
+  let totalRating: any = rating ? rating : ratingKinopoisk
+  
   return (
     <div className="movie" onClick={() => openMoviePage()}>
-      <div className="movie-rating">{rating}</div>
+      <div className={getRatingColor(totalRating)}>{totalRating}</div>
       <img src={posterUrlPreview} alt="poster" />
       <div className="movies-name">{nameRu}</div>
-      { !relationType && <div className="movies-genres">
-        {genres
-          ? genres
-              .map((e) => e.genre)
-              .slice(0, 1)
-              .join()
-          : null}{" "}
-        |{" "}
-        <span>
-          {countries
-            ? countries
-                .map((e) => e.country)
+      {!relationType && (
+        <div className="movies-genres">
+          {genres
+            ? genres
+                .map((e) => e.genre)
                 .slice(0, 1)
                 .join()
-            : null}
-          , {year}
-        </span>
-      </div>
-}
+            : null}{" "}
+          |{" "}
+          <span>
+            {countries
+              ? countries
+                  .map((e) => e.country)
+                  .slice(0, 1)
+                  .join()
+              : null}
+            , {year}
+          </span>
+        </div>
+      )}
     </div>
   );
 };

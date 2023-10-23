@@ -22,15 +22,20 @@ const Menu: FC<IMenu> = ({ isOpen, setIsOpen }) => {
     }
   });
   return (
-    <div className={`menu ${isOpen ? "" : "hidden"} ${theme === "light" ? "light" : ""}`} ref={menuRef}>
+    <div
+      className={`menu ${isOpen ? "" : "hidden"} ${
+        theme === "light" ? "light" : ""
+      }`}
+      ref={menuRef}
+    >
       <nav className="navbar">
         <div className="nav-top">
           <div className="nav-item">
-            <img src={HomeIcon} alt="home" /> <Link to='/main'> домой</Link>
+            <img src={HomeIcon} alt="home" /> <Link to="/main/1"> домой</Link>
           </div>
           <div className="nav-item">
             <img src={TrendsIcon} alt="trends" />
-            <a href="#">новинки</a>
+            <Link to="/latest"> новинки </Link>
           </div>
           <div className="nav-item">
             <img src={FavIcon} alt="fav" />

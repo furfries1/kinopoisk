@@ -18,13 +18,15 @@ export interface ICountry {
 }
 
 export interface IMovie {
-    filmId: number;
+    filmId?: number;
+    kinopoiskId?: number;
     nameRu: string;
     nameEn?: string;
     year?: number;
     countries?: [ICountry];
     genres?: [IGenre];
     rating?: string;
+    ratingKinopoisk?: number;
     relationType?: string;
     posterUrl: string;
     posterUrlPreview: string;
