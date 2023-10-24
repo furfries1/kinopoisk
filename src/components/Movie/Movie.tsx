@@ -2,13 +2,12 @@ import React from "react";
 import "./style.scss";
 import { IMovies } from "src/interfaces/interfaces";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { ThunkDispatch } from "redux-thunk";
-import { AnyAction } from "redux";
 import { getRatingColor } from "src/helpers";
+import { useDispatch } from "react-redux";
 
 const Movie = ({ movie }: IMovies) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const {
     nameRu,
     genres,
@@ -19,13 +18,14 @@ const Movie = ({ movie }: IMovies) => {
     filmId,
     relationType,
     kinopoiskId,
-    ratingKinopoisk
+    ratingKinopoisk,
   } = movie;
   const openMoviePage = () => {
     navigate(`/movie/${kinopoiskId ? kinopoiskId : filmId}`);
+    dispatch({ type: "SET_SEARCH_VALUE", payload: '' });
   };
-  let totalRating: any = rating ? rating : ratingKinopoisk
-  
+  let totalRating: any = rating ? rating : ratingKinopoisk;
+
   return (
     <div className="movie" onClick={() => openMoviePage()}>
       <div className={getRatingColor(totalRating)}>{totalRating}</div>

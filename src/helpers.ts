@@ -26,8 +26,8 @@ export const getRatingColor = (rating: number) => {
     else if(rating >=5) {
         return 'yellow'
     }
-    else if(rating === null || !rating) {
-        return 'hide'
+    else if(rating < 5 ) {
+        return 'red'
     }
-    else return 'red'
+    else return 'hide'
 }

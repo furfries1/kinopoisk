@@ -9,7 +9,7 @@ import ErrorPage from '../ErrorPage/ErrorPage'
 
 const SimilarMovies = () => {
     const { name } = useParams<{ name: string }>();
-    const similarMovies = useSelector(({similarMovies}) => similarMovies)
+    const similarMovies = useSelector(({pages}) => pages.similarMovies)
   return (
     <PageTemplate>
       {similarMovies.length !== 0 ?  

@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useState } from "react";
+import React, { FC, ReactNode, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Header from "src/components/Header/Header";
 import "./style.scss";
@@ -6,8 +6,8 @@ import { IPageTemplate } from "src/interfaces/interfaces";
 import Spinner from "../Spinner/Spinner";
 
 const PageTemplate: FC<IPageTemplate> = ({ children }) => {
-  const theme = useSelector(({ theme }) => theme);
-  const isLoading = useSelector(({ isLoading }) => isLoading);
+  const theme = useSelector(({ ui }) => ui.theme);
+  const isLoading = useSelector(({ ui }) => ui.isLoading);
   return (
     <div className={`page-template ${theme === "dark" ? "dark" : ""}`}>
       <Header />

@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 
 const Menu: FC<IMenu> = ({ isOpen, setIsOpen }) => {
   const dispatch = useDispatch();
-  const theme = useSelector(({ theme }) => theme);
+  const theme = useSelector(({ ui }) => ui.theme);
   const menuRef = useRef<HTMLDivElement>(null);
   useOnClickOutside(menuRef, () => {
     if (isOpen) {

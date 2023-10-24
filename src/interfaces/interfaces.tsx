@@ -65,3 +65,8 @@ export interface ILink {
 export interface ILinks {
   link: ILink;
 }
+
+export interface IPagination {
+  pageType: string;
+  currentPage: number;
+}

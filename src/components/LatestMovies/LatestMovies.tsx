@@ -12,8 +12,8 @@ import { useNavigate } from "react-router-dom";
 const LatestMovies = () => {
   const dispatch = useDispatch<ThunkDispatch<any, {}, AnyAction>>();
   const navigate = useNavigate();
-  const latestMovies = useSelector(({ latestMovies }) => latestMovies);
-  const currentPageLatest = useSelector(({ currentPageLatest }) => currentPageLatest);
+  const latestMovies = useSelector(({ pages }) => pages.latestMovies);
+  const currentPageLatest = useSelector(({ pages }) => pages.currentPageLatest);
   useEffect(() => {
     dispatch(GET_LATEST_MOVIES(currentPageLatest));
     navigate(`/latest/${currentPageLatest}`);

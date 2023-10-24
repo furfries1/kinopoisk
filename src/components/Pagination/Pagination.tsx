@@ -1,16 +1,13 @@
 import React, { FC } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createPages } from "src/helpers";
+import { IPagination } from "src/interfaces/interfaces";
 
-interface IPagination {
-  pageType: string;
-  currentPage: number;
-}
+
 
 const Pagination: FC<IPagination> = ({ pageType, currentPage }) => {
-  const pagesCount = useSelector(({ pagesCount }) => pagesCount);
+  const pagesCount = useSelector(({ pages }) => pages.pagesCount);
   const dispatch = useDispatch();
-//   const currentPage = useSelector(({ currentPage }) => currentPage);
   const onPageClick = (page: number) => {
     if (pageType === "main") {
       dispatch({ type: "SET_CURRENT_PAGE_MAIN", payload: page });
@@ -18,6 +15,10 @@ const Pagination: FC<IPagination> = ({ pageType, currentPage }) => {
     else if (pageType === "latest") {
         dispatch({ type: "SET_CURRENT_PAGE_LATEST", payload: page });
     }
+    else if (pageType === "search") {
+      dispatch({ type: "SET_CURRENT_PAGE_SEARCH", payload: page });
+  }
+    
   };
   let pages: [] = [];
   createPages(pages, pagesCount, currentPage);

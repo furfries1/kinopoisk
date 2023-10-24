@@ -37,7 +37,7 @@ const MoviePage = ({ moviePage }: IMoviePage) => {
     dispatch(GET_SIMILAR_MOVIES(kinopoiskId));
     navigate(`/similar/${nameRu}`);
   };
-  const movieLinks = useSelector(({ movieLinks }) => movieLinks);
+  const movieLinks = useSelector(({ pages }) => pages.movieLinks);
   return (
     <div className="movie-container">
       <div className="poster">
@@ -92,7 +92,7 @@ const MoviePage = ({ moviePage }: IMoviePage) => {
               )}
             </div>
             {isLinksOpen &&
-              movieLinks.map((link: ILink) => <MovieLinks link={link} />)}
+              movieLinks.map((link: ILink) => <MovieLinks key={link.logoUrl} link={link} />)}
           </div>
         </div>
       </div>
