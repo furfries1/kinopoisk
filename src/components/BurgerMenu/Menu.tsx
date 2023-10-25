@@ -9,18 +9,27 @@ import Light from "src/icons/light-theme.svg";
 import Dark from "src/icons/dark-theme.svg";
 import LightActive from "src/icons/light-theme-active.svg";
 import DarkActive from "src/icons/dark-theme-active.svg";
+import Exit from "src/icons/exit.svg"
 import "./style.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Menu: FC<IMenu> = ({ isOpen, setIsOpen }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const theme = useSelector(({ ui }) => ui.theme);
   const menuRef = useRef<HTMLDivElement>(null);
+  const token = localStorage.getItem("access");
   useOnClickOutside(menuRef, () => {
     if (isOpen) {
       setTimeout(() => setIsOpen(false), 250);
     }
   });
+  const logOut = () => {
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
+    dispatch({ type: "REMOVE_USER" });
+    navigate("/signin");
+  };
   return (
     <div
       className={`menu ${isOpen ? "" : "hidden"} ${
@@ -39,8 +48,14 @@ const Menu: FC<IMenu> = ({ isOpen, setIsOpen }) => {
           </div>
           <div className="nav-item">
             <img src={FavIcon} alt="fav" />
-            <a href="#">закладки</a>
+            <Link to="/favorites"> закладки </Link>
           </div>
+          {token ? (
+            <div className="nav-item">
+              <img src={Exit} alt="exit" className="exit"/>
+              <p onClick={() => logOut()}>выйти</p>
+            </div>
+          ) : null}
         </div>
         <div className="nav-bottom">
           <div className="toggle-theme">

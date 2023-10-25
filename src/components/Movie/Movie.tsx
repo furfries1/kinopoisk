@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { getRatingColor } from "src/helpers";
 import { useDispatch } from "react-redux";
 
-const Movie = ({ movie }: IMovies) => {
+const Movie = ({ movie }: IMovies ) => {
   const navigate = useNavigate();
   const dispatch = useDispatch()
   const {

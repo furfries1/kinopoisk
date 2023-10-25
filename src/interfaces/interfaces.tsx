@@ -70,3 +70,19 @@ export interface IPagination {
   pageType: string;
   currentPage: number;
 }
+
+export interface IUser {
+  username: string;
+  email: string;
+  password: string;
+}
+
+export interface IFavoriteMovies {
+  filmId: number;
+  name: string;
+  poster: string;
+}
+
+export interface IFavoriteMovie {
+  favoriteMovies: IFavoriteMovies
+}

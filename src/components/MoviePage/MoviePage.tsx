@@ -37,12 +37,22 @@ const MoviePage = ({ moviePage }: IMoviePage) => {
     dispatch(GET_SIMILAR_MOVIES(kinopoiskId));
     navigate(`/similar/${nameRu}`);
   };
+  const onHandleFavorites = () => {
+    let favoriteMoviesObj = 
+      {
+        filmId: kinopoiskId,
+        poster: posterUrlPreview,
+        name: nameRu
+      }
+    dispatch({type: "SET_FAVORITE_MOVIES", payload: favoriteMoviesObj})
+  }
+
   const movieLinks = useSelector(({ pages }) => pages.movieLinks);
   return (
     <div className="movie-container">
       <div className="poster">
         <img src={posterUrlPreview} alt="poster" />
-        <div className="add-to-fav">
+        <div className="add-to-fav" onClick={() => onHandleFavorites()}>
           <img src={Fav} alt="fav" />
           <span>в закладки</span>
         </div>

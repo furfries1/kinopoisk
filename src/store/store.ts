@@ -116,11 +116,13 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import pagesReducer from "./pagesReducer";
 import uiReducer from "./uiReducer";
+import authReducer from "./authReducer";
 
 
 const rootReducer = combineReducers({
   pages: pagesReducer,
   ui: uiReducer,
+  auth: authReducer
 });
 
 const store = createStore(

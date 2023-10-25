@@ -1,0 +1,51 @@
+@import "../../config.scss";
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    width: 100%;
+    font-family: 'Russo One', sans-serif;
+    & label {
+        margin-bottom: 5px;
+        font-size: 18px;
+        margin-left: 5px;
+    }
+    & p {
+        align-self: center;
+        font-size: 14px;
+    }
+}
+
+.form-input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 2px solid $secondary-dark-color;
+    border-radius: 10px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 20px;
+}
+
+.form-button {
+    max-width: 250px;
+    width: 100%;
+    margin-top: 10px;
+    align-self: center;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Russo One', sans-serif;
+    font-size: 24px;
+    background-color: $purple-color;
+    color: #fff;
+    cursor: pointer;
+    transition-delay: 0.3s;
+    transition: .4s ease-out;
+    &:hover {
+        transform: scale(1.1);
+      }
+}
+
+.signup-img {
+    max-width: 125px;
+}

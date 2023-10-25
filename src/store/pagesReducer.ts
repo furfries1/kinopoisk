@@ -5,6 +5,7 @@ const initialState = {
   movieLinks: [],
   similarMovies: [],
   searchMovies: [],
+  favoriteMovies: [],
   pagesCount: 0,
   currentPageLatest: 1,
   currentPageMain: 1,
@@ -17,6 +18,18 @@ const pagesReducer = (state = initialState, action: any) => {
       return {
         ...state,
         topMovies: action.payload,
+      };
+    }
+    case "SET_FAVORITE_MOVIES": {
+      return {
+        ...state,
+        favoriteMovies: [...state.favoriteMovies.concat(action.payload)],
+      };
+    }
+    case "DELETE_FAVORITE_MOVIE": {
+      return {
+        ...state,
+        favoriteMovies: [...state.favoriteMovies.filter((el: any) => el.filmId !== action.payload)],
       };
     }
     case "SET_MOVIE_PAGE": {
