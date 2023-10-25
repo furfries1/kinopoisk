@@ -1,0 +1,29 @@
+@import "../../config.scss";
+
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error-text {
+    font-family: "Russo One", sans-serif;
+    font-size: 45px;
+    color: #FF5154;
+}
+
+.error-button {
+    width: 300px;
+    padding: 15px;
+    background-color: $purple-color;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    font-family: "Russo One", sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.error-img {
+    max-width: 300px;
+}

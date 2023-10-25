@@ -1,0 +1,31 @@
+@import "../../config.scss";
+
+.movies-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.pages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30%;
+    margin-top: 65px;
+    margin-bottom: 10px;
+}
+
+.page {
+    font-size: 20px;
+    font-family: 'Russo One', sans-serif;
+    cursor: pointer;
+}
+
+.current-page {
+    color: $purple-color;
+    font-size: 22px;
+    font-family: 'Russo One', sans-serif;
+    transform: scale(1.1);
+}

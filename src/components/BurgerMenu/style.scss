@@ -1,0 +1,111 @@
+@import "../../config.scss";
+
+.menu {
+  position: absolute;
+  z-index: 11;
+  top: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 100%;
+  background: $primary-dark-color;
+  display: flex;
+  justify-content: center;
+  width: 30vw;
+  margin-top: 50px;
+  cursor: default;
+}
+
+.light {
+  background-color: #fff;
+  .nav-item {
+    a {
+      color: $primary-dark-color;
+    }
+  }
+}
+
+.burger-icon {
+  transition: .4s ease-out;
+  transition-delay: 0.3s;
+  &:hover {
+    color: $purple-color;
+  }
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-width: 20%;
+  cursor: default;
+}
+
+.hidden {
+  display: none;
+}
+
+.nav-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-item {
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  justify-content: flex-start;
+  align-items: baseline;
+  font-family: "Exo 2", sans-serif;
+  font-weight: 600;
+  gap: 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: .4s ease-out;
+  transition-delay: 0.3s;
+  a {
+    height: 50px;
+    color: #fff;
+    text-decoration: none;
+  }
+  &:hover {
+    a {
+      color: $purple-color;
+    }
+    transform: scale(1.1);
+  }
+}
+
+.nav-bottom {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.light-theme,
+.dark-theme {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: .4s ease-out;
+  transition-delay: 0.3s;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.toggle-theme {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 3em;
+  margin-bottom: 30px;
+}
+
+.exit {
+  width: 20px;
+}
