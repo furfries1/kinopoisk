@@ -56,6 +56,44 @@ export const GET_MOVIE_LINKS = (filmId: number) => {
   };
 };
 
+export const GET_MOVIE_STAFF = (filmId: number) => {
+  return async (dispatch: ThunkDispatch<any, {}, AnyAction>) => {
+    try {
+      instance.get(`/v1/staff?filmId=${filmId}`).then((response) => {
+        const directors = response.data.filter(
+          (e: any) => e.professionKey === "DIRECTOR"
+        );
+        const actors = response.data.filter(
+          (e: any) => e.professionKey === "ACTOR"
+        );
+        dispatch({
+          type: "SET_MOVIE_DIRECTORS",
+          payload: directors.slice(0, 1),
+        });
+        dispatch({ type: "SET_MOVIE_ACTORS", payload: actors.slice(0, 5) });
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const GET_STAFF_PAGE = (staffId: number) => {
+  return async (dispatch: ThunkDispatch<any, {}, AnyAction>) => {
+    dispatch({ type: "SET_LOADING" });
+    try {
+      instance.get(`/v1/staff/${staffId}`).then((response) => {
+        dispatch({ type: "SET_PERSON", payload: response.data });
+      })
+      .then(() => {
+        dispatch({ type: "SET_LOADING" });
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
 export const GET_SIMILAR_MOVIES = (filmId: number) => {
   return async (dispatch: ThunkDispatch<any, {}, AnyAction>) => {
     dispatch({ type: "SET_LOADING" });
@@ -77,6 +115,37 @@ export const GET_SIMILAR_MOVIES = (filmId: number) => {
   };
 };
 
+export const GET_FILTER_ID = () => {
+  return async (dispatch: ThunkDispatch<any, {}, AnyAction>) => {
+    try {
+      instance.get(`v2.2/films/filters`).then((response) => {
+        const filterGenres = response.data.genres
+          .filter((e: any) => e.genre !== "")
+          .map((e: any) => ({
+            value: e.id,
+            label: e.genre,
+          }));
+        const filterCountries = response.data.countries
+          .filter((e: any) => e.country !== "")
+          .map((e: any) => ({
+            value: e.id,
+            label: e.country,
+          }));
+        dispatch({
+          type: "SET_FILTER_GENRES",
+          payload: filterGenres,
+        });
+        dispatch({
+          type: "SET_FILTER_COUNTRIES",
+          payload: filterCountries,
+        });
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
 export const GET_LATEST_MOVIES = (page: number) => {
   return async (dispatch: ThunkDispatch<any, {}, AnyAction>) => {
     dispatch({ type: "SET_LOADING" });
@@ -89,6 +158,46 @@ export const GET_LATEST_MOVIES = (page: number) => {
             payload: response.data.totalPages,
           });
           dispatch({ type: "SET_LATEST_MOVIES", payload: response.data.items });
+        })
+        .then(() => {
+          dispatch({ type: "SET_LOADING" });
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const GET_FILTERED_MOVIES = (
+  countries: number,
+  genres: number,
+  order: string,
+  type: string,
+  ratingFrom: number,
+  ratingTo: number,
+  yearFrom: number,
+  yearTo: number,
+  keyword: string,
+  page: number
+) => {
+  return async (dispatch: ThunkDispatch<any, {}, AnyAction>) => {
+    dispatch({ type: "SET_LOADING" });
+    try {
+      instance
+        .get(
+          `/v2.2/films?${countries ? `countries=${countries}` : null}&${
+            genres ? `genres=${genres}` : null
+          }&order=${order}&type=${type}&ratingFrom=${ratingFrom}&ratingTo=${ratingTo}&yearFrom=${yearFrom}&yearTo=${yearTo}&keyword=${keyword}&page=${page}`
+        )
+        .then((response) => {
+          dispatch({
+            type: "SET_PAGES_COUNT",
+            payload: response.data.totalPages,
+          });
+          dispatch({
+            type: "SET_FILTERED_MOVIES",
+            payload: response.data.items,
+          });
         })
         .then(() => {
           dispatch({ type: "SET_LOADING" });

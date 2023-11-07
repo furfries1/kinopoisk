@@ -1,0 +1,131 @@
+@import "../../config.scss";
+
+.filter-menu {
+  position: absolute;
+  z-index: 11;
+  top: 0;
+  right: 0;
+  margin: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 100vh;
+  background: $primary-dark-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2px;
+  width: 30vw;
+  margin-top: 50px;
+  cursor: default;
+  padding: 20px;
+  h2 {
+    font-size: 25px;
+    font-family: "Russo One", sans-serif;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  p {
+    margin: 0;
+  }
+}
+
+.light {
+  background-color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+.css-b62m3t-container {
+  color: black !important;
+}
+
+.css-13cymwt-control {
+  cursor: pointer !important;
+  margin-top: 5px !important;
+}
+
+.filter-btn {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+  button {
+    padding: 15px;
+    width: 100%;
+    max-width: 150px;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    background-color: #80858b;
+    font-size: 20px;
+    font-family: "Russo One", sans-serif;
+    cursor: pointer;
+    transition: 0.4s ease-out;
+    transition-delay: 0.3s;
+    &:hover {
+      transform: scale(1.1);
+    }
+    &:last-child {
+      background-color: $purple-color;
+    }
+  }
+}
+
+.dropdown {
+  font-family: "Russo One", sans-serif;
+  font-size: 14px;
+  span {
+    font-size: 16px;
+  }
+}
+
+.filter-keyword {
+  font-family: "Russo One", sans-serif;
+  font-size: 16px;
+  input {
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 4px;
+    border: 1px solid hsl(0, 0%, 80%);
+    font-family: "Russo One", sans-serif;
+    font-size: 14px;
+    &::placeholder {
+      font-family: "Russo One", sans-serif;
+      font-size: 14px;
+      padding-left: 10px;
+    }
+  }
+  p {
+    margin-bottom: 8px;
+  }
+}
+
+.number-input {
+  p {
+    font-family: "Russo One", sans-serif;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  input {
+    max-width: 150px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid hsl(0, 0%, 80%);
+    &::placeholder {
+      font-family: "Russo One", sans-serif;
+      font-size: 14px;
+    }
+  }
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-evenly;
+  input {
+    font-family: "Russo One", sans-serif;
+    font-size: 14px;
+  }
+}

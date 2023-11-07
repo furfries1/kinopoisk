@@ -15,24 +15,23 @@ const MainPage = () => {
   const navigate = useNavigate();
   const currentPageMain = useSelector(({ pages }) => pages.currentPageMain);
   const topMovies = useSelector(({ pages }) => pages.topMovies);
-  // useEffect(() => {
-  //   dispatch(GET_TOP_MOVIES(currentPageMain));
-  // }, []);
   useEffect(() => {
     dispatch(GET_TOP_MOVIES(currentPageMain));
+    dispatch({ type: "SET_FILTERED_MOVIES", payload: [] });
     navigate(`/main/${currentPageMain}`);
   }, [currentPageMain]);
   return (
     <PageTemplate>
-      <div className="movies-container">
-        {topMovies.map((movie: IMovie) => (
-          <Movie key={movie.filmId} movie={movie} />
-        ))}
-      </div>
-      <Pagination pageType="main" currentPage={currentPageMain}/>
+      <>
+        <div className="movies-container">
+          {topMovies.map((movie: IMovie) => (
+            <Movie key={movie.filmId} movie={movie} />
+          ))}
+        </div>
+        <Pagination pageType="main" currentPage={currentPageMain} />
+      </>
     </PageTemplate>
   );
 };
 
 export default MainPage;
-

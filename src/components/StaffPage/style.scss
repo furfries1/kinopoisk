@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+@import "../../config.scss";
+
+@mixin rating-style-person {
+  top: 0;
+  left: 0;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: $purple-color;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.person-container {
+  display: flex;
+  gap: 5%;
+  font-family: "Exo 2", sans-serif;
+}
+
+.person-name {
+  font-family: "Russo One", sans-serif;
+  font-size: 45px;
+}
+
+.person-name-en {
+  color: #afb2b6;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.person-info-short {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.person-info-header {
+  font-family: "Russo One", sans-serif;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.person-info-long {
+  span {
+    font-family: "Russo One", sans-serif;
+    margin-right: 10px;
+  }
+}
+
+.facts-container {
+  margin-top: 10px;
+  text-align: left;
+}
+
+.facts-header {
+  font-family: "Russo One", sans-serif;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.films-header {
+  font-family: "Russo One", sans-serif;
+  font-size: 22px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.facts {
+  margin-bottom: 5px;
+  &::before {
+    content: "○";
+    margin-right: 5px;
+  }
+}
+
+.films {
+  cursor: pointer;
+  font-family: "Russo One", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.role {
+  display: inline-block;
+  color: #afb2b6;
+  font-family: "Exo 2", sans-serif;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.film-rating {
+  padding: 10px;
+  border-radius: 50%;
+  background-color: $purple-color;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.green-person {
+  @include rating-style-person;
+  background-color: $rating-green-color;
+}
+
+.yellow-person {
+  @include rating-style-person;
+  background-color: $rating-yellow-color;
+}
+
+.red-person {
+  @include rating-style-person;
+  background-color: $rating-red-color;
+}

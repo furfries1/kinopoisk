@@ -9,6 +9,11 @@ export interface IMenu {
   setIsOpen: (value: boolean) => void;
 }
 
+export interface IFilterMenu {
+  isFilterOpen: boolean;
+  setIsFilterOpen: (value: boolean) => void;
+}
+
 export interface IGenre {
   genre: string;
 }
@@ -71,6 +76,23 @@ export interface IPagination {
   currentPage: number;
 }
 
+export interface IStaff {
+  staffId: number;
+  nameRu: string;
+  posterUrl: string;
+  professionText: string;
+  professionKey: string;
+}
+
+export interface IDirector {
+  director: IStaff;
+}
+
+export interface IActor {
+  actor: IStaff;
+}
+
+
 export interface IUser {
   username: string;
   email: string;
@@ -85,4 +107,5 @@ export interface IFavoriteMovies {
 
 export interface IFavoriteMovie {
   favoriteMovies: IFavoriteMovies
+  deleteMovie: (filmId: number) => void;
 }
