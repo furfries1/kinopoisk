@@ -9,7 +9,7 @@ import Light from "src/icons/light-theme.svg";
 import Dark from "src/icons/dark-theme.svg";
 import LightActive from "src/icons/light-theme-active.svg";
 import DarkActive from "src/icons/dark-theme-active.svg";
-import Exit from "src/icons/exit.svg"
+import Exit from "src/icons/exit.svg";
 import "./style.scss";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -48,11 +48,15 @@ const Menu: FC<IMenu> = ({ isOpen, setIsOpen }) => {
           </div>
           <div className="nav-item">
             <img src={FavIcon} alt="fav" />
-            <Link to="/favorites"> закладки </Link>
+            {token ? (
+              <Link to="/favorites"> коллекция </Link>
+            ) : (
+              <Link to="/signin"> коллекция </Link>
+            )}
           </div>
           {token ? (
             <div className="nav-item">
-              <img src={Exit} alt="exit" className="exit"/>
+              <img src={Exit} alt="exit" className="exit" />
               <p onClick={() => logOut()}>выйти</p>
             </div>
           ) : null}

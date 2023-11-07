@@ -1,0 +1,11 @@
+@import "../../config.scss";
+
+.director-name {
+  display: inline-block;
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: underline;
+  &:hover {
+    color: $purple-color;
+  }
+}

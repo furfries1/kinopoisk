@@ -96,3 +96,11 @@
     height: 22px;
    }
 }
+
+.filter-icon {
+  position: relative;
+  left: -35px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}

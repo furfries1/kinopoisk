@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import { Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import MainPage from "./components/MainPage/MainPage";
 import MoviePageContainer from "./components/MoviePage/MoviePageContainer";
 import SimilarMovies from "./components/SimilarMovies/SimilarMovies";
@@ -10,12 +16,14 @@ import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
 import { decodeJwt, expToMinutes, updateAccessToken } from "./helpers";
 import FavoriteMoviesPage from "./components/FavoriteMoviesPage/FavoriteMoviesPage";
+import StaffPage from "./components/StaffPage/StaffPage";
+import FilteredMovies from "./components/FilteredMoviesPage/FilteredMovies";
 
 export let remainingMinutes: number;
 
 function App() {
   const location = useLocation();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const token = localStorage.getItem("access");
   const startTokenRefreshTimer = () => {
     if (!token) return null;
@@ -49,15 +57,23 @@ function App() {
   return (
     <>
       <Routes>
+        {token && (
+          <>
+            <Route path="/signin" element={<SignIn />} />
+          </>
+        )}
+        <Route path="/favorites" element={<FavoriteMoviesPage />} />
         <Route path="/main/:page" element={<MainPage />} />
         <Route path="/movie/:id" element={<MoviePageContainer />} />
         <Route path="/similar/:name" element={<SimilarMovies />} />
         <Route path="/latest/:page" element={<LatestMovies />} />
-        <Route path="/favorites" element={<FavoriteMoviesPage />} />
+        <Route path="*" element={<MainPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/moviepage" element={<MoviePageContainer />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/filteredMovies" element={<FilteredMovies />} />
+        <Route path="/staff/:id" element={<StaffPage />} />
       </Routes>
       {location.pathname === "/" && <Navigate to="/main/1" />}
       {location.pathname === "/latest" && <Navigate to="/latest/1" />}

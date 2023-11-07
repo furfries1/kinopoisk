@@ -5,11 +5,18 @@ const initialState = {
   movieLinks: [],
   similarMovies: [],
   searchMovies: [],
-  favoriteMovies: [],
+  movieDirectors: [],
+  movieActors: [],
+  person: [],
+  filterGenres: [],
+  filterCountries: [],
+  filteredMovies: [],
+  filterParams: {},
   pagesCount: 0,
   currentPageLatest: 1,
   currentPageMain: 1,
   currentPageSearch: 1,
+  currentPageFilter: 1,
 };
 
 const pagesReducer = (state = initialState, action: any) => {
@@ -20,28 +27,46 @@ const pagesReducer = (state = initialState, action: any) => {
         topMovies: action.payload,
       };
     }
-    case "SET_FAVORITE_MOVIES": {
-      return {
-        ...state,
-        favoriteMovies: [...state.favoriteMovies.concat(action.payload)],
-      };
-    }
-    case "DELETE_FAVORITE_MOVIE": {
-      return {
-        ...state,
-        favoriteMovies: [...state.favoriteMovies.filter((el: any) => el.filmId !== action.payload)],
-      };
-    }
     case "SET_MOVIE_PAGE": {
       return {
         ...state,
         moviePage: action.payload,
       };
     }
+    case "SET_PERSON": {
+      return {
+        ...state,
+        person: action.payload,
+      };
+    }
+    case "SET_FILTER_GENRES": {
+      return {
+        ...state,
+        filterGenres: action.payload,
+      };
+    }
+    case "SET_FILTER_COUNTRIES": {
+      return {
+        ...state,
+        filterCountries: action.payload,
+      };
+    }
     case "SET_MOVIE_LINKS": {
       return {
         ...state,
         movieLinks: action.payload,
+      };
+    }
+    case "SET_MOVIE_DIRECTORS": {
+      return {
+        ...state,
+        movieDirectors: action.payload,
+      };
+    }
+    case "SET_MOVIE_ACTORS": {
+      return {
+        ...state,
+        movieActors: action.payload,
       };
     }
     case "SET_SIMILAR_MOVIES": {
@@ -74,6 +99,12 @@ const pagesReducer = (state = initialState, action: any) => {
         currentPageSearch: action.payload,
       };
     }
+    case "SET_CURRENT_PAGE_FILTER": {
+      return {
+        ...state,
+        currentPageFilter: action.payload,
+      };
+    }
     case "SET_LATEST_MOVIES": {
       return {
         ...state,
@@ -90,6 +121,18 @@ const pagesReducer = (state = initialState, action: any) => {
       return {
         ...state,
         searchValue: action.payload,
+      };
+    }
+    case "SET_FILTERED_MOVIES": {
+      return {
+        ...state,
+        filteredMovies: action.payload,
+      };
+    }
+    case "SET_FILTER_PARAMS": {
+      return {
+        ...state,
+        filterParams: action.payload,
       };
     }
     default:

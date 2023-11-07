@@ -1,0 +1,17 @@
+@import "../../config.scss";
+
+.actor-name {
+  display: inline-block;
+  font-family: "Exo 2", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  margin-right: 10px;
+  text-decoration: underline;
+  cursor: pointer;
+  &:hover {
+    color: $purple-color;
+  }
+  &:not(:last-child):after {
+    content: ",";
+  }
+}
